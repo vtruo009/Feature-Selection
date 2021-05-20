@@ -108,7 +108,7 @@ void ForwardSelection(int algoChoice, int numFeatures) {
     cout << "Finished search! The best feature subset is "; PrintFeatureSet(bestFeatureSet); cout << ", which has an accuracy of " << bestScore << "%\n";
 }
 
-int BackwardElimination(int algoChoice, int numFeatures) {
+void BackwardElimination(int algoChoice, int numFeatures) {
     queue< vector<int> > newFeatureSets;
     bool higherFound = true;
 
