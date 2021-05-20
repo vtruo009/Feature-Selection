@@ -37,14 +37,31 @@ vector<int> GetInitFeatureSet(int algoChoice, int numFeatures) {
     return featureSet;
 }
 
-void GetNextFeatureSet(queue< vector<int> > &newFeatureSet, vector<int> &currSet, int numFeatures) {
-    for (int i = 1; i <= numFeatures; ++i) {
-        if (find(currSet.begin(), currSet.end(), i) == currSet.end()) {
+void GetNextFeatureSet(int algoChoice, queue< vector<int> > &newFeatureSet, vector<int> &currSet, int numFeatures) {
+    switch (algoChoice)
+    {
+    case 1:
+        for (int i = 1; i <= numFeatures; ++i) {
+            if (find(currSet.begin(), currSet.end(), i) == currSet.end()) {
+                vector<int> newSet = currSet;
+                newSet.push_back(i);
+                newFeatureSet.push(newSet);
+            }
+        }
+        break;
+    
+    case 2:
+        for (int i = 0; i < currSet.size(); ++i) {
             vector<int> newSet = currSet;
-            newSet.push_back(i);
+            newSet.erase(newSet.begin() + i);
             newFeatureSet.push(newSet);
         }
+        break;
+
+    default:
+        break;
     }
+
 }
 
 void ClearQueue(queue< vector<int> > &newFeatureSets) {
@@ -63,7 +80,7 @@ void ForwardSelection(int algoChoice, int numFeatures) {
     vector<int> bestFeatureSet = initFeatureSet;
     double bestScore = initScore;
 
-    GetNextFeatureSet(newFeatureSets, initFeatureSet, numFeatures);
+    GetNextFeatureSet(algoChoice, newFeatureSets, initFeatureSet, numFeatures);
     for (int i = 1; i <= numFeatures; ++i) {
         higherFound = false;
         while (!newFeatureSets.empty()) {
@@ -86,18 +103,49 @@ void ForwardSelection(int algoChoice, int numFeatures) {
         }
         cout << "\nFeature set "; PrintFeatureSet(bestFeatureSet); cout << " was best, accuracy is " << bestScore << "%\n\n";
         ClearQueue(newFeatureSets);
-        GetNextFeatureSet(newFeatureSets, bestFeatureSet, numFeatures);
+        GetNextFeatureSet(algoChoice, newFeatureSets, bestFeatureSet, numFeatures);
     }
     cout << "Finished search! The best feature subset is "; PrintFeatureSet(bestFeatureSet); cout << ", which has an accuracy of " << bestScore << "%\n";
 }
 
 int BackwardElimination(int algoChoice, int numFeatures) {
-    vector<int> initFeatureSet = GetInitFeatureSet(algoChoice, numFeatures);
-    if (!initFeatureSet.empty()) {
-        PrintFeatureSet(initFeatureSet);
-    }
-}
+    queue< vector<int> > newFeatureSets;
+    bool higherFound = true;
 
+    vector<int> initFeatureSet = GetInitFeatureSet(algoChoice, numFeatures);
+    double initScore = 55.4; // max
+    cout << "Using inital features "; PrintFeatureSet(initFeatureSet); cout << " and \"random\" evaluation, I get an accuracy of " << initScore << "%\n\nBeginning search.\n\n";
+
+    vector<int> bestFeatureSet = initFeatureSet;
+    double bestScore = initScore;
+
+    GetNextFeatureSet(algoChoice, newFeatureSets, initFeatureSet, numFeatures);
+    for (int i = 1; i <= numFeatures; ++i) {
+        higherFound = false;
+        while (!newFeatureSets.empty()) {
+            vector<int> currFeatureSet = newFeatureSets.front();
+            newFeatureSets.pop();
+            double currScore = CalcAccuracy();
+            cout << "Using feature(s) "; PrintFeatureSet(currFeatureSet); cout << " accuracy is " << currScore << "%\n";
+            if (bestScore < currScore) {
+                bestFeatureSet = currFeatureSet;
+                bestScore = currScore;
+                higherFound = true;
+            }
+        }
+        if (!higherFound) {
+            cout << "\n(Warning, Accuracy has decreased!)\n";
+            if (i == 1) {
+                cout << "Finished search! The best feature subset is the initial empty feature set, which has an accuracy of " << bestScore << "%\n";
+            }
+            break;
+        }
+        cout << "\nFeature set "; PrintFeatureSet(bestFeatureSet); cout << " was best, accuracy is " << bestScore << "%\n\n";
+        ClearQueue(newFeatureSets);
+        GetNextFeatureSet(algoChoice, newFeatureSets, bestFeatureSet, numFeatures);
+    }
+    cout << "Finished search! The best feature subset is "; PrintFeatureSet(bestFeatureSet); cout << ", which has an accuracy of " << bestScore << "%\n";
+}
 
 int main() {
     srand(time(NULL));
@@ -122,6 +170,12 @@ int main() {
         
         case 2:
             BackwardElimination(algoChoice, numFeatures);
+            break;
+        
+        case 3:
+            //special algo
+            break;
+            
         default:
             break;
     }
