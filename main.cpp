@@ -2,24 +2,24 @@
 #include <vector>
 #include <queue>
 #include "math.h"
-// #include "Node.h"
+#include "Validator.h"
 
 using namespace std;
 
-double CalcAccuracy() {
-    double accuracy = (double)(rand() % 100);
+// double CalcAccuracy() { // leave one out
+//     double accuracy = (double)(rand() % 100);
 
-    return accuracy;
-}
+//     return accuracy;
+// }
 
 
-void PrintFeatureSet(vector<int> featureSet) {
-    cout << '{' << featureSet.at(0);
-    for (int i = 1; i < featureSet.size(); ++i) {
-        cout << ',' << featureSet.at(i);
-    }
-    cout << '}';
-}
+// void PrintFeatureSet(vector<int> featureSet) {
+//     cout << '{' << featureSet.at(0);
+//     for (int i = 1; i < featureSet.size(); ++i) {
+//         cout << ',' << featureSet.at(i);
+//     }
+//     cout << '}';
+// }
 
 vector<int> GetInitFeatureSet(int algoChoice, int numFeatures) {
     vector<int> featureSet;
@@ -70,12 +70,13 @@ void ClearQueue(queue< vector<int> > &newFeatureSets) {
 }
 
 void ForwardSelection(int algoChoice, int numFeatures) {
+    Validator v;
     queue< vector<int> > newFeatureSets;
     bool higherFound = true;
 
     vector<int> initFeatureSet = GetInitFeatureSet(algoChoice, numFeatures);
     double initScore = 55.4; // max
-    cout << "Using no features and \"random\" evaluation, I get an accuracy of " << initScore << "%\n\nBeginning search.\n\n";
+    cout << "\nUsing no features and \"random\" evaluation, I get an accuracy of " << initScore << "%\n\nBeginning search.\n\n";
 
     vector<int> bestFeatureSet = initFeatureSet;
     double bestScore = initScore;
@@ -86,8 +87,8 @@ void ForwardSelection(int algoChoice, int numFeatures) {
         while (!newFeatureSets.empty()) {
             vector<int> currFeatureSet = newFeatureSets.front();
             newFeatureSets.pop();
-            double currScore = CalcAccuracy();
-            cout << "Using feature(s) "; PrintFeatureSet(currFeatureSet); cout << " accuracy is " << currScore << "%\n";
+            double currScore = v.LeaveOneOutValidation(numFeatures, currFeatureSet);
+            cout << "Using feature(s) "; v.PrintFeatureSet(currFeatureSet); cout << " accuracy is " << currScore << "%\n\n";
             if (bestScore < currScore) {
                 bestFeatureSet = currFeatureSet;
                 bestScore = currScore;
@@ -101,20 +102,21 @@ void ForwardSelection(int algoChoice, int numFeatures) {
             }
             break;
         }
-        cout << "\nFeature set "; PrintFeatureSet(bestFeatureSet); cout << " was best, accuracy is " << bestScore << "%\n\n";
+        cout << "\nFeature set "; v.PrintFeatureSet(bestFeatureSet); cout << " was best, accuracy is " << bestScore << "%\n\n";
         ClearQueue(newFeatureSets);
         GetNextFeatureSet(algoChoice, newFeatureSets, bestFeatureSet, numFeatures);
     }
-    cout << "Finished search! The best feature subset is "; PrintFeatureSet(bestFeatureSet); cout << ", which has an accuracy of " << bestScore << "%\n";
+    cout << "Finished search! The best feature subset is "; v.PrintFeatureSet(bestFeatureSet); cout << ", which has an accuracy of " << bestScore << "%\n";
 }
 
 void BackwardElimination(int algoChoice, int numFeatures) {
+    Validator v;
     queue< vector<int> > newFeatureSets;
     bool higherFound = true;
 
     vector<int> initFeatureSet = GetInitFeatureSet(algoChoice, numFeatures);
     double initScore = 55.4; // max
-    cout << "Using inital features "; PrintFeatureSet(initFeatureSet); cout << " and \"random\" evaluation, I get an accuracy of " << initScore << "%\n\nBeginning search.\n\n";
+    cout << "\nUsing inital features "; v.PrintFeatureSet(initFeatureSet); cout << " and \"random\" evaluation, I get an accuracy of " << initScore << "%\n\nBeginning search.\n\n";
 
     vector<int> bestFeatureSet = initFeatureSet;
     double bestScore = initScore;
@@ -125,8 +127,8 @@ void BackwardElimination(int algoChoice, int numFeatures) {
         while (!newFeatureSets.empty()) {
             vector<int> currFeatureSet = newFeatureSets.front();
             newFeatureSets.pop();
-            double currScore = CalcAccuracy();
-            cout << "Using feature(s) "; PrintFeatureSet(currFeatureSet); cout << " accuracy is " << currScore << "%\n";
+            double currScore = v.LeaveOneOutValidation(numFeatures, currFeatureSet);
+            cout << "Using feature(s) "; v.PrintFeatureSet(currFeatureSet); cout << " accuracy is " << currScore << "%\n";
             if (bestScore < currScore) {
                 bestFeatureSet = currFeatureSet;
                 bestScore = currScore;
@@ -140,15 +142,15 @@ void BackwardElimination(int algoChoice, int numFeatures) {
             }
             break;
         }
-        cout << "\nFeature set "; PrintFeatureSet(bestFeatureSet); cout << " was best, accuracy is " << bestScore << "%\n\n";
+        cout << "\nFeature set "; v.PrintFeatureSet(bestFeatureSet); cout << " was best, accuracy is " << bestScore << "%\n\n";
         ClearQueue(newFeatureSets);
         GetNextFeatureSet(algoChoice, newFeatureSets, bestFeatureSet, numFeatures);
     }
-    cout << "Finished search! The best feature subset is "; PrintFeatureSet(bestFeatureSet); cout << ", which has an accuracy of " << bestScore << "%\n";
+    cout << "Finished search! The best feature subset is "; v.PrintFeatureSet(bestFeatureSet); cout << ", which has an accuracy of " << bestScore << "%\n";
 }
 
 int main() {
-    srand(time(NULL));
+    // srand(time(NULL));
     int numFeatures = 0;
     int algoChoice = 0;
     cout << "Welcome to Van's Feature Search Algorithms." << endl;
@@ -179,6 +181,9 @@ int main() {
         default:
             break;
     }
-
+    // Validator v = Validator();
+    // vector<int> test = {1, 15, 27};
+    // double ac = v.LeaveOneOutValidation(numFeatures, test);
+    // cout << "accuracy: " << ac << endl;
     return 0;
 }
