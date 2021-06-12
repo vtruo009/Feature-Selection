@@ -7,7 +7,7 @@ using namespace std;
 
 class Classifier {
     public:
-        void Train(vector< vector<double> > &);
+        void Train(vector< vector<double> > &, string);
         string Test(int, vector<int> &, vector< vector<double> > &);
         void Normalize(int, vector< vector<double> > &);
         void PrepareData();

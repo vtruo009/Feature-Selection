@@ -13,6 +13,7 @@ using namespace std;
 //     }
 //     cout << '}';
 // }
+vector< vector<double> > instances;
 
 vector<int> GetInitFeatureSet(int algoChoice, int numFeatures) {
     vector<int> featureSet;
@@ -68,11 +69,11 @@ void ForwardSelection(int algoChoice, int numFeatures) {
     bool higherFound = true;
 
     vector<int> initFeatureSet = GetInitFeatureSet(algoChoice, numFeatures);
-    double initScore = v.LeaveOneOutValidation(numFeatures, initFeatureSet); // max
+    double initScore = v.LeaveOneOutValidation(numFeatures, initFeatureSet, instances); // max
     cout << "\nRunning nearest neighbor with no features (default rate), using \"leave-one-out\" evaluation, I get an accuracy of " << initScore << "%\n\nBeginning search.\n\n";
 
     vector<int> bestFeatureSet = initFeatureSet;
-    double bestScore = initScore;
+    double bestScore = 0.0;
 
     GetNextFeatureSet(algoChoice, newFeatureSets, initFeatureSet, numFeatures);
     for (int i = 1; i <= numFeatures; ++i) {
@@ -80,7 +81,7 @@ void ForwardSelection(int algoChoice, int numFeatures) {
         while (!newFeatureSets.empty()) {
             vector<int> currFeatureSet = newFeatureSets.front();
             newFeatureSets.pop();
-            double currScore = v.LeaveOneOutValidation(numFeatures, currFeatureSet);
+            double currScore = v.LeaveOneOutValidation(numFeatures, currFeatureSet, instances);
             // double currScore = CalcAccuracy();
             // cout << "Using feature(s) "; v.PrintFeatureSet(currFeatureSet); cout << " accuracy is " << currScore << "%\n\n";
             if (bestScore < currScore) {
@@ -96,7 +97,7 @@ void ForwardSelection(int algoChoice, int numFeatures) {
             }
             break;
         }
-        cout << "Feature set "; v.PrintFeatureSet(bestFeatureSet); cout << " was best, accuracy is " << bestScore << "%\n\n";
+        cout << "\nFeature set "; v.PrintFeatureSet(bestFeatureSet); cout << " was best, accuracy is " << bestScore << "%\n\n";
         ClearQueue(newFeatureSets);
         GetNextFeatureSet(algoChoice, newFeatureSets, bestFeatureSet, numFeatures);
     }
@@ -109,11 +110,11 @@ void BackwardElimination(int algoChoice, int numFeatures) {
     bool higherFound = true;
 
     vector<int> initFeatureSet = GetInitFeatureSet(algoChoice, numFeatures);
-    double initScore = v.LeaveOneOutValidation(numFeatures, initFeatureSet); // max
-    cout << "\nUsing inital features "; v.PrintFeatureSet(initFeatureSet); cout << " and \"random\" evaluation, I get an accuracy of " << initScore << "%\n\nBeginning search.\n\n";
+    double initScore = v.LeaveOneOutValidation(numFeatures, initFeatureSet, instances); // max
+    cout << "\nRunning nearest neighbor with no features (default rate), using \"leave-one-out\" evaluation, I get an accuracy of " << initScore << "%\n\nBeginning search.\n\n";
 
     vector<int> bestFeatureSet = initFeatureSet;
-    double bestScore = initScore;
+    double bestScore = 0.0;
 
     GetNextFeatureSet(algoChoice, newFeatureSets, initFeatureSet, numFeatures);
     for (int i = 1; i <= numFeatures; ++i) {
@@ -121,7 +122,7 @@ void BackwardElimination(int algoChoice, int numFeatures) {
         while (!newFeatureSets.empty()) {
             vector<int> currFeatureSet = newFeatureSets.front();
             newFeatureSets.pop();
-            double currScore = v.LeaveOneOutValidation(numFeatures, currFeatureSet);
+            double currScore = v.LeaveOneOutValidation(numFeatures, currFeatureSet, instances);
             // double currScore = CalcAccuracy();
             // cout << "Using feature(s) "; v.PrintFeatureSet(currFeatureSet); cout << " accuracy is " << currScore << "%\n";
             if (bestScore < currScore) {
@@ -147,11 +148,16 @@ void BackwardElimination(int algoChoice, int numFeatures) {
 int main() {
     // srand(time(NULL));
     int numFeatures = 0;
+    Classifier c;
     int algoChoice = 0;
+    string filename = "";
     cout << "Welcome to Van's Feature Selection Algorithms." << endl;
+    cout << "Type in the name of the file to test: ";
+    cin >> filename;
+    cout << "\n\n";
 
-    cout << "Please enter the total number of features: ";
-    cin >> numFeatures;
+    // cout << "Please enter the total number of features: ";
+    // cin >> numFeatures;
 
     cout << "Type in the number of the algorithm you want to run.\n" <<
         "1. Forward Selection\n" <<
@@ -159,7 +165,14 @@ int main() {
         "3. Van's Special Algorithm\n";
     cin >> algoChoice;
 
+    c.Train(instances, filename);
+    numFeatures = instances.at(0).size() - 1;
+    cout << "\nThis dataset has " << numFeatures << " features (not including the class attribute), with " << instances.size() << " instnaces.\n\n";
     
+    cout << "Please wait while I normalize the data... ";
+    c.Normalize(numFeatures, instances);
+    cout << "Done!\n";
+
     switch (algoChoice) {
         case 1:
             ForwardSelection(algoChoice, numFeatures);
@@ -178,6 +191,6 @@ int main() {
     }
     // Validator v;
     // vector<int> test = {3, 5, 7};
-    // double ac = v.LeaveOneOutValidation(numFeatures, test);
+    // double ac = v.LeaveOneOutValidation(numFeatures, test, instances);
     return 0;
 }

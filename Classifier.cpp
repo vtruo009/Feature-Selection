@@ -7,9 +7,9 @@
 
 using namespace std;
 
-void Classifier::Train(vector< vector<double> > &instances) {
+void Classifier::Train(vector< vector<double> > &instances, string filename) {
     // Lod Data References: https://www.tutorialspoint.com/read-file-line-by-line-using-cplusplus
-    fstream newfile("cs_170_small80.txt");
+    fstream newfile(filename);
     string tp;
     while (getline(newfile >> ws, tp)) {
         string feature = "";
