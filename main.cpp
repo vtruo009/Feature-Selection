@@ -6,13 +6,6 @@
 
 using namespace std;
 
-// double CalcAccuracy() { // leave one out
-//     double accuracy = (double)(rand() % 100);
-
-//     return accuracy;
-// }
-
-
 // void PrintFeatureSet(vector<int> featureSet) {
 //     cout << '{' << featureSet.at(0);
 //     for (int i = 1; i < featureSet.size(); ++i) {
@@ -75,8 +68,8 @@ void ForwardSelection(int algoChoice, int numFeatures) {
     bool higherFound = true;
 
     vector<int> initFeatureSet = GetInitFeatureSet(algoChoice, numFeatures);
-    double initScore = 55.4; // max
-    cout << "\nUsing no features and \"random\" evaluation, I get an accuracy of " << initScore << "%\n\nBeginning search.\n\n";
+    double initScore = v.LeaveOneOutValidation(numFeatures, initFeatureSet); // max
+    cout << "\nRunning nearest neighbor with no features (default rate), using \"leave-one-out\" evaluation, I get an accuracy of " << initScore << "%\n\nBeginning search.\n\n";
 
     vector<int> bestFeatureSet = initFeatureSet;
     double bestScore = initScore;
@@ -88,7 +81,8 @@ void ForwardSelection(int algoChoice, int numFeatures) {
             vector<int> currFeatureSet = newFeatureSets.front();
             newFeatureSets.pop();
             double currScore = v.LeaveOneOutValidation(numFeatures, currFeatureSet);
-            cout << "Using feature(s) "; v.PrintFeatureSet(currFeatureSet); cout << " accuracy is " << currScore << "%\n\n";
+            // double currScore = CalcAccuracy();
+            // cout << "Using feature(s) "; v.PrintFeatureSet(currFeatureSet); cout << " accuracy is " << currScore << "%\n\n";
             if (bestScore < currScore) {
                 bestFeatureSet = currFeatureSet;
                 bestScore = currScore;
@@ -102,7 +96,7 @@ void ForwardSelection(int algoChoice, int numFeatures) {
             }
             break;
         }
-        cout << "\nFeature set "; v.PrintFeatureSet(bestFeatureSet); cout << " was best, accuracy is " << bestScore << "%\n\n";
+        cout << "Feature set "; v.PrintFeatureSet(bestFeatureSet); cout << " was best, accuracy is " << bestScore << "%\n\n";
         ClearQueue(newFeatureSets);
         GetNextFeatureSet(algoChoice, newFeatureSets, bestFeatureSet, numFeatures);
     }
@@ -115,7 +109,7 @@ void BackwardElimination(int algoChoice, int numFeatures) {
     bool higherFound = true;
 
     vector<int> initFeatureSet = GetInitFeatureSet(algoChoice, numFeatures);
-    double initScore = 55.4; // max
+    double initScore = v.LeaveOneOutValidation(numFeatures, initFeatureSet); // max
     cout << "\nUsing inital features "; v.PrintFeatureSet(initFeatureSet); cout << " and \"random\" evaluation, I get an accuracy of " << initScore << "%\n\nBeginning search.\n\n";
 
     vector<int> bestFeatureSet = initFeatureSet;
@@ -128,7 +122,8 @@ void BackwardElimination(int algoChoice, int numFeatures) {
             vector<int> currFeatureSet = newFeatureSets.front();
             newFeatureSets.pop();
             double currScore = v.LeaveOneOutValidation(numFeatures, currFeatureSet);
-            cout << "Using feature(s) "; v.PrintFeatureSet(currFeatureSet); cout << " accuracy is " << currScore << "%\n";
+            // double currScore = CalcAccuracy();
+            // cout << "Using feature(s) "; v.PrintFeatureSet(currFeatureSet); cout << " accuracy is " << currScore << "%\n";
             if (bestScore < currScore) {
                 bestFeatureSet = currFeatureSet;
                 bestScore = currScore;
@@ -153,7 +148,7 @@ int main() {
     // srand(time(NULL));
     int numFeatures = 0;
     int algoChoice = 0;
-    cout << "Welcome to Van's Feature Search Algorithms." << endl;
+    cout << "Welcome to Van's Feature Selection Algorithms." << endl;
 
     cout << "Please enter the total number of features: ";
     cin >> numFeatures;
@@ -181,9 +176,8 @@ int main() {
         default:
             break;
     }
-    // Validator v = Validator();
-    // vector<int> test = {1, 15, 27};
+    // Validator v;
+    // vector<int> test = {3, 5, 7};
     // double ac = v.LeaveOneOutValidation(numFeatures, test);
-    // cout << "accuracy: " << ac << endl;
     return 0;
 }
