@@ -1,0 +1,52 @@
+Welcome to Van's Feature Selection Algorithms.
+Type in the name of the file to test: 
+
+Type in the number of the algorithm you want to run.
+1. Forward Selection
+2. Backward Ellimination
+3. Van's Special Algorithm
+
+This dataset has 10 features (not including the class attribute), with 100 instnaces.
+
+Please wait while I normalize the data... Done!
+
+Running nearest neighbor with no features (default rate), using "leave-one-out" evaluation, I get an accuracy of 75%
+
+Beginning search.
+
+Using feature(s) {1}, the accuracy is 57%
+Using feature(s) {2}, the accuracy is 55%
+Using feature(s) {3}, the accuracy is 68%
+Using feature(s) {4}, the accuracy is 65%
+Using feature(s) {5}, the accuracy is 75%
+Using feature(s) {6}, the accuracy is 61%
+Using feature(s) {7}, the accuracy is 62%
+Using feature(s) {8}, the accuracy is 60%
+Using feature(s) {9}, the accuracy is 66%
+Using feature(s) {10}, the accuracy is 64%
+
+Feature set {5} was best, accuracy is 75%
+
+Using feature(s) {1,5}, the accuracy is 76%
+Using feature(s) {2,5}, the accuracy is 80%
+Using feature(s) {3,5}, the accuracy is 92%
+Using feature(s) {4,5}, the accuracy is 75%
+Using feature(s) {5,6}, the accuracy is 79%
+Using feature(s) {5,7}, the accuracy is 80%
+Using feature(s) {5,8}, the accuracy is 77%
+Using feature(s) {5,9}, the accuracy is 73%
+Using feature(s) {5,10}, the accuracy is 82%
+
+Feature set {3,5} was best, accuracy is 92%
+
+Using feature(s) {1,3,5}, the accuracy is 83%
+Using feature(s) {2,3,5}, the accuracy is 79%
+Using feature(s) {3,4,5}, the accuracy is 84%
+Using feature(s) {3,5,6}, the accuracy is 82%
+Using feature(s) {3,5,7}, the accuracy is 89%
+Using feature(s) {3,5,8}, the accuracy is 79%
+Using feature(s) {3,5,9}, the accuracy is 82%
+Using feature(s) {3,5,10}, the accuracy is 85%
+
+(Warning, Accuracy has decreased!)
+Finished search! The best feature subset is {3,5}, which has an accuracy of 92%

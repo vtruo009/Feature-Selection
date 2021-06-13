@@ -1,0 +1,182 @@
+Welcome to Van's Feature Selection Algorithms.
+Type in the name of the file to test: 
+
+Type in the number of the algorithm you want to run.
+1. Forward Selection
+2. Backward Ellimination
+3. Van's Special Algorithm
+
+This dataset has 40 features (not including the class attribute), with 1000 instnaces.
+
+Please wait while I normalize the data... Done!
+
+Running nearest neighbor with no features (default rate), using "leave-one-out" evaluation, I get an accuracy of 81.5%
+
+Beginning search.
+
+Using feature(s) {1}, the accuracy is 71.1%
+Using feature(s) {2}, the accuracy is 70.5%
+Using feature(s) {3}, the accuracy is 70.4%
+Using feature(s) {4}, the accuracy is 70.2%
+Using feature(s) {5}, the accuracy is 71.1%
+Using feature(s) {6}, the accuracy is 69%
+Using feature(s) {7}, the accuracy is 70.2%
+Using feature(s) {8}, the accuracy is 69.2%
+Using feature(s) {9}, the accuracy is 70%
+Using feature(s) {10}, the accuracy is 70.7%
+Using feature(s) {11}, the accuracy is 83.6%
+Using feature(s) {12}, the accuracy is 70%
+Using feature(s) {13}, the accuracy is 68.9%
+Using feature(s) {14}, the accuracy is 69.8%
+Using feature(s) {15}, the accuracy is 70.9%
+Using feature(s) {16}, the accuracy is 69.1%
+Using feature(s) {17}, the accuracy is 68.5%
+Using feature(s) {18}, the accuracy is 73.5%
+Using feature(s) {19}, the accuracy is 68.8%
+Using feature(s) {20}, the accuracy is 68.3%
+Using feature(s) {21}, the accuracy is 69.4%
+Using feature(s) {22}, the accuracy is 67.1%
+Using feature(s) {23}, the accuracy is 72.4%
+Using feature(s) {24}, the accuracy is 67.7%
+Using feature(s) {25}, the accuracy is 70.1%
+Using feature(s) {26}, the accuracy is 71.2%
+Using feature(s) {27}, the accuracy is 70.6%
+Using feature(s) {28}, the accuracy is 69.6%
+Using feature(s) {29}, the accuracy is 70.5%
+Using feature(s) {30}, the accuracy is 68.5%
+Using feature(s) {31}, the accuracy is 71.1%
+Using feature(s) {32}, the accuracy is 68.6%
+Using feature(s) {33}, the accuracy is 67.9%
+Using feature(s) {34}, the accuracy is 70.4%
+Using feature(s) {35}, the accuracy is 70.4%
+Using feature(s) {36}, the accuracy is 69.8%
+Using feature(s) {37}, the accuracy is 69.8%
+Using feature(s) {38}, the accuracy is 70.3%
+Using feature(s) {39}, the accuracy is 72.9%
+Using feature(s) {40}, the accuracy is 71.7%
+
+Feature set {11} was best, accuracy is 83.6%
+
+Using feature(s) {1,11}, the accuracy is 83.3%
+Using feature(s) {2,11}, the accuracy is 84.6%
+Using feature(s) {3,11}, the accuracy is 82.8%
+Using feature(s) {4,11}, the accuracy is 83.7%
+Using feature(s) {5,11}, the accuracy is 85.4%
+Using feature(s) {6,11}, the accuracy is 81.9%
+Using feature(s) {7,11}, the accuracy is 83.6%
+Using feature(s) {8,11}, the accuracy is 84.5%
+Using feature(s) {9,11}, the accuracy is 85.2%
+Using feature(s) {10,11}, the accuracy is 84.9%
+Using feature(s) {11,12}, the accuracy is 82.6%
+Using feature(s) {11,13}, the accuracy is 82.5%
+Using feature(s) {11,14}, the accuracy is 83.6%
+Using feature(s) {11,15}, the accuracy is 84.7%
+Using feature(s) {11,16}, the accuracy is 83.7%
+Using feature(s) {11,17}, the accuracy is 85.3%
+Using feature(s) {11,18}, the accuracy is 95.7%
+Using feature(s) {11,19}, the accuracy is 82.6%
+Using feature(s) {11,20}, the accuracy is 83.7%
+Using feature(s) {11,21}, the accuracy is 84.5%
+Using feature(s) {11,22}, the accuracy is 83.7%
+Using feature(s) {11,23}, the accuracy is 83%
+Using feature(s) {11,24}, the accuracy is 84.8%
+Using feature(s) {11,25}, the accuracy is 85.5%
+Using feature(s) {11,26}, the accuracy is 81.9%
+Using feature(s) {11,27}, the accuracy is 82.5%
+Using feature(s) {11,28}, the accuracy is 83.6%
+Using feature(s) {11,29}, the accuracy is 82.3%
+Using feature(s) {11,30}, the accuracy is 85.6%
+Using feature(s) {11,31}, the accuracy is 83.7%
+Using feature(s) {11,32}, the accuracy is 82.8%
+Using feature(s) {11,33}, the accuracy is 83.7%
+Using feature(s) {11,34}, the accuracy is 81.4%
+Using feature(s) {11,35}, the accuracy is 81%
+Using feature(s) {11,36}, the accuracy is 83.4%
+Using feature(s) {11,37}, the accuracy is 83%
+Using feature(s) {11,38}, the accuracy is 83.9%
+Using feature(s) {11,39}, the accuracy is 85.2%
+Using feature(s) {11,40}, the accuracy is 84.2%
+
+Feature set {11,18} was best, accuracy is 95.7%
+
+Using feature(s) {1,11,18}, the accuracy is 92.1%
+Using feature(s) {2,11,18}, the accuracy is 95.9%
+Using feature(s) {3,11,18}, the accuracy is 92.3%
+Using feature(s) {4,11,18}, the accuracy is 93.3%
+Using feature(s) {5,11,18}, the accuracy is 93.6%
+Using feature(s) {6,11,18}, the accuracy is 93.4%
+Using feature(s) {7,11,18}, the accuracy is 93.5%
+Using feature(s) {8,11,18}, the accuracy is 93%
+Using feature(s) {9,11,18}, the accuracy is 92.7%
+Using feature(s) {10,11,18}, the accuracy is 92.4%
+Using feature(s) {11,12,18}, the accuracy is 93.9%
+Using feature(s) {11,13,18}, the accuracy is 93.8%
+Using feature(s) {11,14,18}, the accuracy is 93.1%
+Using feature(s) {11,15,18}, the accuracy is 94.8%
+Using feature(s) {11,16,18}, the accuracy is 93.7%
+Using feature(s) {11,17,18}, the accuracy is 94.4%
+Using feature(s) {11,18,19}, the accuracy is 94.6%
+Using feature(s) {11,18,20}, the accuracy is 93.1%
+Using feature(s) {11,18,21}, the accuracy is 93.5%
+Using feature(s) {11,18,22}, the accuracy is 93.2%
+Using feature(s) {11,18,23}, the accuracy is 93%
+Using feature(s) {11,18,24}, the accuracy is 93.5%
+Using feature(s) {11,18,25}, the accuracy is 93.4%
+Using feature(s) {11,18,26}, the accuracy is 93.3%
+Using feature(s) {11,18,27}, the accuracy is 91.5%
+Using feature(s) {11,18,28}, the accuracy is 93.6%
+Using feature(s) {11,18,29}, the accuracy is 93.3%
+Using feature(s) {11,18,30}, the accuracy is 93.3%
+Using feature(s) {11,18,31}, the accuracy is 93.7%
+Using feature(s) {11,18,32}, the accuracy is 94.5%
+Using feature(s) {11,18,33}, the accuracy is 92.1%
+Using feature(s) {11,18,34}, the accuracy is 93.4%
+Using feature(s) {11,18,35}, the accuracy is 93%
+Using feature(s) {11,18,36}, the accuracy is 94.8%
+Using feature(s) {11,18,37}, the accuracy is 92.5%
+Using feature(s) {11,18,38}, the accuracy is 92.7%
+Using feature(s) {11,18,39}, the accuracy is 93.1%
+Using feature(s) {11,18,40}, the accuracy is 92.9%
+
+Feature set {2,11,18} was best, accuracy is 95.9%
+
+Using feature(s) {1,2,11,18}, the accuracy is 91.6%
+Using feature(s) {2,3,11,18}, the accuracy is 91.7%
+Using feature(s) {2,4,11,18}, the accuracy is 91.7%
+Using feature(s) {2,5,11,18}, the accuracy is 91.6%
+Using feature(s) {2,6,11,18}, the accuracy is 90.7%
+Using feature(s) {2,7,11,18}, the accuracy is 91.1%
+Using feature(s) {2,8,11,18}, the accuracy is 90.6%
+Using feature(s) {2,9,11,18}, the accuracy is 92.2%
+Using feature(s) {2,10,11,18}, the accuracy is 91.6%
+Using feature(s) {2,11,12,18}, the accuracy is 91.8%
+Using feature(s) {2,11,13,18}, the accuracy is 90.4%
+Using feature(s) {2,11,14,18}, the accuracy is 90.6%
+Using feature(s) {2,11,15,18}, the accuracy is 89.4%
+Using feature(s) {2,11,16,18}, the accuracy is 91.8%
+Using feature(s) {2,11,17,18}, the accuracy is 92.2%
+Using feature(s) {2,11,18,19}, the accuracy is 90.3%
+Using feature(s) {2,11,18,20}, the accuracy is 90.7%
+Using feature(s) {2,11,18,21}, the accuracy is 91.5%
+Using feature(s) {2,11,18,22}, the accuracy is 93%
+Using feature(s) {2,11,18,23}, the accuracy is 90.8%
+Using feature(s) {2,11,18,24}, the accuracy is 91.4%
+Using feature(s) {2,11,18,25}, the accuracy is 90.6%
+Using feature(s) {2,11,18,26}, the accuracy is 92.3%
+Using feature(s) {2,11,18,27}, the accuracy is 90%
+Using feature(s) {2,11,18,28}, the accuracy is 91.4%
+Using feature(s) {2,11,18,29}, the accuracy is 91.9%
+Using feature(s) {2,11,18,30}, the accuracy is 91.6%
+Using feature(s) {2,11,18,31}, the accuracy is 91.2%
+Using feature(s) {2,11,18,32}, the accuracy is 90.2%
+Using feature(s) {2,11,18,33}, the accuracy is 92.4%
+Using feature(s) {2,11,18,34}, the accuracy is 92.1%
+Using feature(s) {2,11,18,35}, the accuracy is 92.2%
+Using feature(s) {2,11,18,36}, the accuracy is 91.3%
+Using feature(s) {2,11,18,37}, the accuracy is 90.8%
+Using feature(s) {2,11,18,38}, the accuracy is 90.8%
+Using feature(s) {2,11,18,39}, the accuracy is 91%
+Using feature(s) {2,11,18,40}, the accuracy is 91%
+
+(Warning, Accuracy has decreased!)
+Finished search! The best feature subset is {2,11,18}, which has an accuracy of 95.9%

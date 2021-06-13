@@ -1,0 +1,80 @@
+Welcome to Van's Feature Selection Algorithms.
+Type in the name of the file to test: 
+
+Type in the number of the algorithm you want to run.
+1. Forward Selection
+2. Backward Ellimination
+3. Van's Special Algorithm
+
+This dataset has 10 features (not including the class attribute), with 100 instnaces.
+
+Please wait while I normalize the data... Done!
+Using feature(s) {1,2,3,4,5,6,7,8,9,10}, the accuracy is 67%
+
+Running nearest neighbor with no features (default rate), using "leave-one-out" evaluation, I get an accuracy of 67%
+
+Beginning search.
+
+Using feature(s) {2,3,4,5,6,7,8,9,10}, the accuracy is 68%
+Using feature(s) {1,3,4,5,6,7,8,9,10}, the accuracy is 66%
+Using feature(s) {1,2,4,5,6,7,8,9,10}, the accuracy is 74%
+Using feature(s) {1,2,3,5,6,7,8,9,10}, the accuracy is 68%
+Using feature(s) {1,2,3,4,6,7,8,9,10}, the accuracy is 71%
+Using feature(s) {1,2,3,4,5,7,8,9,10}, the accuracy is 70%
+Using feature(s) {1,2,3,4,5,6,8,9,10}, the accuracy is 61%
+Using feature(s) {1,2,3,4,5,6,7,9,10}, the accuracy is 70%
+Using feature(s) {1,2,3,4,5,6,7,8,10}, the accuracy is 67%
+Using feature(s) {1,2,3,4,5,6,7,8,9}, the accuracy is 70%
+
+Feature set {1,2,4,5,6,7,8,9,10} was best, accuracy is 74%
+
+Using feature(s) {2,4,5,6,7,8,9,10}, the accuracy is 73%
+Using feature(s) {1,4,5,6,7,8,9,10}, the accuracy is 74%
+Using feature(s) {1,2,5,6,7,8,9,10}, the accuracy is 70%
+Using feature(s) {1,2,4,6,7,8,9,10}, the accuracy is 63%
+Using feature(s) {1,2,4,5,7,8,9,10}, the accuracy is 76%
+Using feature(s) {1,2,4,5,6,8,9,10}, the accuracy is 66%
+Using feature(s) {1,2,4,5,6,7,9,10}, the accuracy is 70%
+Using feature(s) {1,2,4,5,6,7,8,10}, the accuracy is 75%
+Using feature(s) {1,2,4,5,6,7,8,9}, the accuracy is 68%
+
+Feature set {1,2,4,5,7,8,9,10} was best, accuracy is 76%
+
+Using feature(s) {2,4,5,7,8,9,10}, the accuracy is 77%
+Using feature(s) {1,4,5,7,8,9,10}, the accuracy is 74%
+Using feature(s) {1,2,5,7,8,9,10}, the accuracy is 63%
+Using feature(s) {1,2,4,7,8,9,10}, the accuracy is 59%
+Using feature(s) {1,2,4,5,8,9,10}, the accuracy is 70%
+Using feature(s) {1,2,4,5,7,9,10}, the accuracy is 78%
+Using feature(s) {1,2,4,5,7,8,10}, the accuracy is 73%
+Using feature(s) {1,2,4,5,7,8,9}, the accuracy is 71%
+
+Feature set {1,2,4,5,7,9,10} was best, accuracy is 78%
+
+Using feature(s) {2,4,5,7,9,10}, the accuracy is 74%
+Using feature(s) {1,4,5,7,9,10}, the accuracy is 74%
+Using feature(s) {1,2,5,7,9,10}, the accuracy is 68%
+Using feature(s) {1,2,4,7,9,10}, the accuracy is 65%
+Using feature(s) {1,2,4,5,9,10}, the accuracy is 74%
+Using feature(s) {1,2,4,5,7,10}, the accuracy is 79%
+Using feature(s) {1,2,4,5,7,9}, the accuracy is 75%
+
+Feature set {1,2,4,5,7,10} was best, accuracy is 79%
+
+Using feature(s) {2,4,5,7,10}, the accuracy is 83%
+Using feature(s) {1,4,5,7,10}, the accuracy is 72%
+Using feature(s) {1,2,5,7,10}, the accuracy is 73%
+Using feature(s) {1,2,4,7,10}, the accuracy is 61%
+Using feature(s) {1,2,4,5,10}, the accuracy is 72%
+Using feature(s) {1,2,4,5,7}, the accuracy is 77%
+
+Feature set {2,4,5,7,10} was best, accuracy is 83%
+
+Using feature(s) {4,5,7,10}, the accuracy is 78%
+Using feature(s) {2,5,7,10}, the accuracy is 79%
+Using feature(s) {2,4,7,10}, the accuracy is 70%
+Using feature(s) {2,4,5,10}, the accuracy is 76%
+Using feature(s) {2,4,5,7}, the accuracy is 77%
+
+(Warning, Accuracy has decreased!)
+Finished search! The best feature subset is {2,4,5,7,10}, which has an accuracy of 83%

@@ -161,36 +161,36 @@ int main() {
 
     cout << "Type in the number of the algorithm you want to run.\n" <<
         "1. Forward Selection\n" <<
-        "2. Backward Ellimination\n" <<
+        "2. Backward Elimination\n" <<
         "3. Van's Special Algorithm\n";
     cin >> algoChoice;
 
     c.Train(instances, filename);
     numFeatures = instances.at(0).size() - 1;
-    cout << "\nThis dataset has " << numFeatures << " features (not including the class attribute), with " << instances.size() << " instnaces.\n\n";
+    cout << "\nThis dataset has " << numFeatures << " features (not including the class attribute), with " << instances.size() << " instances.\n\n";
     
     cout << "Please wait while I normalize the data... ";
     c.Normalize(numFeatures, instances);
     cout << "Done!\n";
 
-    switch (algoChoice) {
-        case 1:
-            ForwardSelection(algoChoice, numFeatures);
-            break;
+    // switch (algoChoice) {
+    //     case 1:
+    //         ForwardSelection(algoChoice, numFeatures);
+    //         break;
         
-        case 2:
-            BackwardElimination(algoChoice, numFeatures);
-            break;
+    //     case 2:
+    //         BackwardElimination(algoChoice, numFeatures);
+    //         break;
         
-        case 3:
-            //special algo
-            break;
+    //     case 3:
+    //         //special algo
+    //         break;
             
-        default:
-            break;
-    }
-    // Validator v;
-    // vector<int> test = {3, 5, 7};
-    // double ac = v.LeaveOneOutValidation(numFeatures, test, instances);
+    //     default:
+    //         break;
+    // }
+    Validator v;
+    vector<int> test = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40};
+    double ac = v.LeaveOneOutValidation(numFeatures, test, instances);
     return 0;
 }
