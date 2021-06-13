@@ -32,14 +32,6 @@ void Classifier::Train(vector< vector<double> > &instances, string filename) {
         features.push_back(temp);
         instances.push_back(features);
     }
-    // Normalize(numFeatures);
-    // for (int i = 0; i < instances.size(); ++i) {
-    //     for (int j = 0; j < instances.at(i).size(); ++j){
-    //         cout << instances.at(i).at(j) << ' ';
-    //     }
-    //     cout << endl;
-    // }
-    // Normalize(numFeatures);                         // Normalize data
 }
 
 string Classifier::Test(int testInstanceIndex, vector<int> &featureSubset, vector< vector<double> > &instances) {
@@ -66,14 +58,6 @@ string Classifier::Test(int testInstanceIndex, vector<int> &featureSubset, vecto
 }
 
 void Classifier::Normalize(int numFeatures, vector< vector<double> > &instances) {
-    // load data, which will be moved to Train()
-    // int numFeatures = 4;
-    // for (int i = 0; i < v.size(); ++i) {
-    //     for (int j = 0; j < v.at(i).size(); ++j) {
-    //         v.at(i).at(j) = i;
-    //     }
-    // }
-
     // Calculating the mean of each column/feature
     vector<double> means(1, 0);
     for (int i = 1; i <= numFeatures; ++i) { // added <=
@@ -95,44 +79,4 @@ void Classifier::Normalize(int numFeatures, vector< vector<double> > &instances)
             instances.at(k).at(i) = (instances.at(k).at(i) - means.at(i)) / sd;
         }
     }
-    // for (int i = 0; i < 5; ++i) {
-    //     for (int j = 0; j < instances.at(i).size(); ++j){
-    //         cout << instances.at(i).at(j) << ' ';
-    //     }
-    //     cout << endl;
-    // }
-
 }
-
-// void Classifier::PrepareData() {
-//     fstream newfile("cs_170_small80.txt");
-//     string tp;
-//     while (getline(newfile >> ws, tp)) {
-//         string feature = "";
-//         vector<double> features;
-//         double temp;
-//         for (int i = 0; i < tp.size(); ++i) {
-//             if (tp.at(i) == ' ') {
-//                 istringstream os(feature);
-//                 os >> temp;
-//                 features.push_back(temp);
-//                 feature = "";
-//                 ++i;
-//             }
-//             else {
-//                 feature += tp.at(i);
-//             }
-//         }
-//         istringstream os(feature);
-//         os >> temp;
-//         features.push_back(temp);
-//         instances.push_back(features);
-//     }
-//     // Normalize(numFeatures);
-//     // for (int i = 0; i < instances.size(); ++i) {
-//     //     for (int j = 0; j < instances.at(i).size(); ++j){
-//     //         cout << instances.at(i).at(j) << ' ';
-//     //     }
-//     //     cout << endl;
-//     // }
-// }

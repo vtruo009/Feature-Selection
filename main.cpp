@@ -6,13 +6,6 @@
 
 using namespace std;
 
-// void PrintFeatureSet(vector<int> featureSet) {
-//     cout << '{' << featureSet.at(0);
-//     for (int i = 1; i < featureSet.size(); ++i) {
-//         cout << ',' << featureSet.at(i);
-//     }
-//     cout << '}';
-// }
 vector< vector<double> > instances;
 
 vector<int> GetInitFeatureSet(int algoChoice, int numFeatures) {
@@ -82,8 +75,6 @@ void ForwardSelection(int algoChoice, int numFeatures) {
             vector<int> currFeatureSet = newFeatureSets.front();
             newFeatureSets.pop();
             double currScore = v.LeaveOneOutValidation(numFeatures, currFeatureSet, instances);
-            // double currScore = CalcAccuracy();
-            // cout << "Using feature(s) "; v.PrintFeatureSet(currFeatureSet); cout << " accuracy is " << currScore << "%\n\n";
             if (bestScore < currScore) {
                 bestFeatureSet = currFeatureSet;
                 bestScore = currScore;
@@ -123,8 +114,6 @@ void BackwardElimination(int algoChoice, int numFeatures) {
             vector<int> currFeatureSet = newFeatureSets.front();
             newFeatureSets.pop();
             double currScore = v.LeaveOneOutValidation(numFeatures, currFeatureSet, instances);
-            // double currScore = CalcAccuracy();
-            // cout << "Using feature(s) "; v.PrintFeatureSet(currFeatureSet); cout << " accuracy is " << currScore << "%\n";
             if (bestScore < currScore) {
                 bestFeatureSet = currFeatureSet;
                 bestScore = currScore;
@@ -156,9 +145,6 @@ int main() {
     cin >> filename;
     cout << "\n\n";
 
-    // cout << "Please enter the total number of features: ";
-    // cin >> numFeatures;
-
     cout << "Type in the number of the algorithm you want to run.\n" <<
         "1. Forward Selection\n" <<
         "2. Backward Elimination\n" <<
@@ -173,24 +159,24 @@ int main() {
     c.Normalize(numFeatures, instances);
     cout << "Done!\n";
 
-    // switch (algoChoice) {
-    //     case 1:
-    //         ForwardSelection(algoChoice, numFeatures);
-    //         break;
+    switch (algoChoice) {
+        case 1:
+            ForwardSelection(algoChoice, numFeatures);
+            break;
         
-    //     case 2:
-    //         BackwardElimination(algoChoice, numFeatures);
-    //         break;
+        case 2:
+            BackwardElimination(algoChoice, numFeatures);
+            break;
         
-    //     case 3:
-    //         //special algo
-    //         break;
+        case 3:
+            //special algo
+            break;
             
-    //     default:
-    //         break;
-    // }
-    Validator v;
-    vector<int> test = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40};
-    double ac = v.LeaveOneOutValidation(numFeatures, test, instances);
-    return 0;
+        default:
+            break;
+    }
+    // Validator v;
+    // vector<int> test = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40};
+    // double ac = v.LeaveOneOutValidation(numFeatures, test, instances);
+    // return 0;
 }
