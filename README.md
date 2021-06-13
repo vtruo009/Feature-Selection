@@ -5,7 +5,10 @@ The purpose of this project is to explore the two search algorithms of machine l
 
 ## To run & execute the program:
 ```g++ -std=c++11 main.cpp Classifier.cpp Validator.cpp```<br>
-```./a.out```
+```./a.out```<br>
+The program will prompt for the file name that contains the dataset. For example: ```cs_170_small104.txt```. Then choose an search algorithm to perform feature search.<br>
+* 1 - Forward Selection<br>
+* 2 - Backward Elimination<br>
 
 ## Files
 ```Validator.h``` and ```Validator.cpp```<br>
