@@ -9,14 +9,8 @@ using namespace std;
 double Validator::LeaveOneOutValidation(int numFeatures, vector<int> &featureSubset, vector< vector<double> > &instances) {
     // Timer Reference: https://www.geeksforgeeks.org/measure-execution-time-function-cpp/
     Classifier c;
-    // if (instances.size() == 0) {
-    //     c.Train(instances);          // Load data
-    //     c.Normalize(numFeatures, instances);
-    // }
     double correctLabels = 0, testInstanceIndex;
     double accuracy;
-    // auto start = chrono::high_resolution_clock::now();
-    
     // Default Rate
     if (featureSubset.size() == 0) {
         double one = 0.0, two = 0.0;
@@ -36,8 +30,6 @@ double Validator::LeaveOneOutValidation(int numFeatures, vector<int> &featureSub
         }
     }
 
-    // cout << "Starting validation..." << endl;
-    
     for (int i = 0; i < instances.size(); ++i) {
         testInstanceIndex = i;
         string testLabel = c.Test(testInstanceIndex, featureSubset, instances);
@@ -46,16 +38,7 @@ double Validator::LeaveOneOutValidation(int numFeatures, vector<int> &featureSub
         }
     }
 
-    // auto stop = chrono::high_resolution_clock::now();
-    // auto duration = chrono::duration_cast<chrono::milliseconds>(stop - start);
-    // cout << "Time taken for validation = " << duration.count() << " milliseconds" << endl;
     accuracy = correctLabels/instances.size();
-    // string subset = "{" + to_string(featureSubset.at(0));
-    // for (int i = 1; i < featureSubset.size(); ++i) {
-    //     subset += ' ' + to_string(featureSubset.at(i));
-    // }
-    // subset += "}";
-    // cout << "Using features " << subset << ", the accuracy is " << accuracy*100 << "%" << endl;
     cout << "Using feature(s) "; PrintFeatureSet(featureSubset); cout<< ", the accuracy is " << accuracy* 100 << "%\n";
     return accuracy*100;
 }

@@ -147,8 +147,7 @@ int main() {
 
     cout << "Type in the number of the algorithm you want to run.\n" <<
         "1. Forward Selection\n" <<
-        "2. Backward Elimination\n" <<
-        "3. Van's Special Algorithm\n";
+        "2. Backward Elimination\n";
     cin >> algoChoice;
 
     c.Train(instances, filename);
