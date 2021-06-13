@@ -8,8 +8,14 @@ The purpose of this project is to explore the two search algorithms of machine l
 ```./a.out```
 
 ## Files
-```Validator.h```<br>
-```Validator.cpp```<br>
-```Classifier.h```<br>
-```Classifier.cpp```<br>
+```Validator.h``` and ```Validator.cpp```<br>
+These two files contain the function ```LeaveOneOutValidation()```, which tests the instances by picking out one instance for test instance and the rest is the training instances.<br>
+
+```Classifier.h``` and ```Classifier.cpp```<br>
+These two files contain the functions ```Train()```, ```Test()```, and ```Normalize()```.<br>
+* ```Train()``` - Load the data from the dataset<br>
+* ```Test()``` - This function computes the Euclidean distance between the test instance and all the training instances.<br>
+* ```Normalize()``` - This function normalizes the data after it has been loaded to bring the data down to scale.<br>
+
 ```main.cpp```<br>
+The main file contains the user interface and the search algorithms: Forward Selection and Backward Elimination.
