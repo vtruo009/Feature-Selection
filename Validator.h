@@ -1,5 +1,6 @@
 #include <ostream>
 #include <vector>
+#include <algorithm>
 #include "Classifier.h"
 
 using namespace std;
